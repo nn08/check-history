@@ -1,0 +1,78 @@
+<div class="text-lg-center">
+  <p>
+      <a href="https://www.fitforbanking.com/murex/modules.php" target="_top">Murex Modules </a>
+  </p>
+
+
+<!--p class="text-right">Hello {{employee_id}}</p-->
+<p class="text-right">Hello 123</p>
+
+</div>
+
+<h1 class="text-center">SKILLSET</h1>
+
+<ng-template #create>
+   <h3 class="text-center"> Rating </h3>
+</ng-template>
+<div>
+  <form [formGroup]="recordForm" (ngSubmit)="onRecordFormSubmit()">
+   <table class="table-striped" style="margin:0 auto;">
+     <tr><th>Enter Period To Check</th><td><input formControlName="period"></td>
+ 	       <label *ngIf="recordForm.get('period').invalid && processValidation" [ngClass] = "'error'"> period is required. </label>
+    	</tr>
+     <tr><td colspan="2">
+       <button class="btn btn-default">Check</button>
+      
+ 	     </td></tr>
+   </table>
+  </form>
+</div>
+<br>
+<div class="card">
+<h3 class="card-header text-center font-weight-bold py-4">Check Rating History</h3>
+<div class="card-body">
+<div id="table" class="table-editable">
+ <table class="table table-striped text-center" style="margin:0 auto;" *ngIf="allRecords">
+   <tr>
+         <th class="text-center">Period</th>
+         <th class="text-center">Skill ID</th>
+         <th class="text-center">Description</th>
+         <th class="text-center">Rating</th>
+         <th class="text-center">Comment</th>
+   </tr>
+   <tr *ngFor="let record of allRecords" >
+     <td>
+        <span contenteditable="false">{{record.period}}</span>
+    </td>
+     <td>
+        <span contenteditable="false">{{record.id}}</span>
+    </td>
+    <td>
+       <span contenteditable="false">{{record.skill_item}}</span>
+   </td>
+   <td>
+      <span contenteditable="false">{{record.rating}}</span>
+  </td>
+  <td>
+     <span contenteditable="false">{{record.comment}}</span>
+ </td>
+
+<!-- this was using editable table, but not sure how to adjust the width and apply controls, need to do some reearch)>
+   <td>
+      <span contenteditable="true" (keyup)="changeValue('rating', $event)" (blur)="updateList('rating', $event)">{{record.rating}}</span>
+  </td>
+<!-- below is using fromc-control but should be tag with edit and delete button on each row. not sure how to submit whole table at once for bulk update and not row by row
+   <td>
+     <input formControlName="rating" type="numbr" class="form-control" value={{record.rating}}>
+   </td>
+-->
+     <!--td>{{record.id}}</td><td>{{record.period}}</td><td>{{record.rating}}</td>
+     <!--label *ngIf="recordForm.get('rating').invalid && processValidation" [ngClass] = "'error'"> Rating is required. </label-->
+   </tr>
+ <!--tr><td colspan="2">
+   <button class="btn btn-default" *ngIf="!recordIdToUpdate">Submit</button>
+ </td></tr-->
+</table>
+</div>
+</div>
+</div>
