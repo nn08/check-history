@@ -111,7 +111,7 @@ let util = require('../Utilities/util'),
     let getRecordByPeriod = (data, callback) => {
         async.auto({
             record: (cb) => {
-                let criteria = {
+                var criteria = {
                   "id":'123',
                   "period":data.period,
                 }
@@ -122,6 +122,7 @@ let util = require('../Utilities/util'),
                         cb(null, {"errorCode": util.statusCode.INTERNAL_SERVER_ERROR,"statusMessage": util.statusMessage.SERVER_BUSY});
                         return;
                     }
+                    console.log(data);
                     cb(null, data);
                     return;
                 });

@@ -4,7 +4,7 @@ h1 {
     font-weight: 400;
 }
 h3 {
-	color: blue;
+	color: gray;
 }
 table {
     border-collapse: collapse;
@@ -20,7 +20,7 @@ input {
 	font-size:17px;
 }
 button {
-    background-color: #008CBA;
+    background-color: #6c757d;
 	color: white;
 }
 .error{

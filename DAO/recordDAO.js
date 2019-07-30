@@ -14,10 +14,11 @@ let getRecordDetail = (criteria, callback) => {
 }
 
 let getRecordDetailByPeriod = (criteria, callback) => {
-	let conditions = "";
+	var conditions = "";
     criteria.period ? conditions += ` and r.period = '${criteria.period}'` : true;
     criteria.id ? conditions += ` and r.employee_id = '${criteria.id}'` : true;
-    dbConfig.getDB().query(`select r.period, r.skill_id, s.skill_item, r.rating, r.comment from record r left join skills_description s on r.id=s.skill_id where 1 ${conditions}`, callback);
+    //console.log("select r.period, r.skill_id, s.skill_item, r.rating, r.comment from record r left join skills_description s on r.skill_id=s.skill_id where 1 ",conditions)
+    dbConfig.getDB().query(`select r.period, r.skill_id, s.skill_item, r.self_rating, r.comment from record r left join skills_description s on r.skill_id=s.skill_id where 1 ${conditions}`, callback);
 }
 
 let createRecord = (dataToSet, callback) => {
